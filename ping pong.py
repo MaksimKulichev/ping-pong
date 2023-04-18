@@ -48,8 +48,8 @@ FPS = 60
 
 
 #создания мяча и ракетки   
-racket1 = Player('180.png', 30, 200, 4, 50, 150) 
-racket2 = Player('180.png', 520, 200, 4, 50, 150)
+racket1 = Player('raketka.jpg', 30, 200, 4, 50, 150) 
+racket2 = Player('raketka.jpg', 520, 200, 4, 50, 150)
 ball = GameSprite('ping ball.png', 200, 200, 4, 50, 50)
 
 
@@ -62,6 +62,12 @@ lose2 = font.render('PLAYER 2 LOSE!', True, (180, 0, 0))
 speed_x = 3
 speed_y = 3
 
+
+score1 = 0
+score2 = 0
+
+max_score1 = 3
+max_score2 = 3
 
 while game:
    for e in event.get():
@@ -87,16 +93,22 @@ while game:
 
        #если мяч улетел дальше ракетки, выводим условие проигрыша для первого игрока
        if ball.rect.x < 0:
-           finish = True
-           window.blit(lose1, (200, 200))
-           game_over = True
+            text = font.render("Сколько пропустил игрок 1: " + str(score1), 1, (255, 255, 255))
+            window.blit(text, (10, 20))
+            if max_score1 == 3:
+                finish = True
+                window.blit(lose1, (200, 200))
+                game_over = True
 
 
        #если мяч улетел дальше ракетки, выводим условие проигрыша для второго игрока
        if ball.rect.x > win_width:
-           finish = True
-           window.blit(lose2, (200, 200))
-           game_over = True
+            text_lose = font.render("Сколько пропустил игрок 2: " + str(score2), 1, (255, 255, 255))
+            window.blit(text_lose, (10, 50))
+            if max_score2 == 3:
+                finish = True
+                window.blit(lose2, (200, 200))
+                game_over = True
 
 
        racket1.reset()
