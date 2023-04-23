@@ -64,7 +64,7 @@ speed_y = 3
 
 score1 = 0
 score2 = 0
-
+score = font.render(str(score1)+':'+str(score1), True, (180, 0, 0))
 while game:
     for e in event.get():
         if e.type == QUIT:
@@ -113,11 +113,10 @@ while game:
         window.blit(lose1, (200, 200))
 
 
-
     racket1.reset()
     racket2.reset()
     ball.reset()
 
-
+    window.blit(score,(200, 200))
     display.update()
     clock.tick(FPS)
