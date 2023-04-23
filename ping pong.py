@@ -1,7 +1,6 @@
 from pygame import *
 '''Необходимые классы'''
 
-
 #класс-родитель для спрайтов
 class GameSprite(sprite.Sprite):
    def __init__(self, player_image, player_x, player_y, player_speed, wight, height):
@@ -95,6 +94,10 @@ while game:
         window.blit(score, (280, 100))
         ball.rect.x = 250
         ball.rect.y = 250
+    
+    if score1 == 10:
+        finish = True
+        window.blit(lose2, (200, 200))
 
 
     #если мяч улетел дальше ракетки, выводим условие проигрыша для второго игрока
@@ -104,6 +107,10 @@ while game:
         window.blit(score, (280, 100))
         ball.rect.x = 250
         ball.rect.y = 250
+    
+    if score2 == 10:
+        finish = True
+        window.blit(lose1, (200, 200))
 
 
 
